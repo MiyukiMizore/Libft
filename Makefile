@@ -6,18 +6,57 @@
 #    By: mfusil <mfusil@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/01 19:21:22 by mfusil            #+#    #+#              #
-#    Updated: 2022/03/12 18:58:37 by mfusil           ###   ########.fr        #
+#    Updated: 2022/04/26 19:45:38 by mfusil           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_memchr.c\
-	  ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c\
-	  ft_strchr.c ft_strdup.c ft_striteri.c ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strncmp.c ft_strnstr.c\
-	  ft_strrchr.c ft_tolower.c ft_toupper.c ft_substr.c ft_strtrim.c ft_itoa.c ft_split.c ft_strjoin.c ft_strmapi.c\
+SRC_CHECK = check/ft_isalnum.c\
+	  		check/ft_isalpha.c\
+			check/ft_isdigit.c\
+			check/ft_isascii.c\
+	  		check/ft_isprint.c
 
-OBJS = $(SRC:.c=.o)
+SRC_CONVERT = convert/ft_atoi.c\
+			  convert/ft_itoa.c\
+			  convert/ft_tolower.c\
+			  convert/ft_toupper.c
+
+SRC_FD = fd_function/ft_putchar_fd.c\
+		 fd_function/ft_putnbr_fd.c\
+		 fd_function/ft_putendl_fd.c\
+		 fd_function/ft_putstr_fd.c
+
+SRC_MEM = mem/ft_bzero.c\
+		  mem/ft_calloc.c\
+		  mem/ft_memchr.c\
+		  mem/ft_memcmp.c\
+		  mem/ft_memcpy.c\
+		  mem/ft_memmove.c\
+		  mem/ft_memset.c
+SRC_STR = str/ft_strchr.c\
+		  str/ft_strdup.c\
+		  str/ft_striteri.c\
+		  str/ft_strlcat.c\
+		  str/ft_strlcpy.c\
+		  str/ft_strlen.c\
+		  str/ft_strncmp.c\
+		  str/ft_strnstr.c\
+		  str/ft_strrchr.c\
+		  str/ft_substr.c\
+		  str/ft_strtrim.c\
+		  str/ft_split.c\
+		  str/ft_strjoin.c\
+		  str/ft_strmapi.c
+
+ALL_SRC = $(SRC_CHECK)\
+		  $(SRC_CONVERT)\
+		  $(SRC_FD)\
+		  $(SRC_MEM)\
+		  $(SRC_STR)
+
+OBJS = $(ALL_SRC:.c=.o)\
 
 CC = gcc
 
@@ -32,9 +71,36 @@ $(NAME) : $(OBJS)
 	ar rc $(NAME) $(OBJS)
 
 clean :
-	rm -f $(OBJS)
+	@rm -f $(OBJS)
+	@echo "JE SUIS MIMIE MATHY"
 
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "$(PURPLE)$(BOLD)JE SUIS THANOS"
 
 re : fclean all
+
+#Colors
+PURPLE=\x1b[35m
+GREY=\x1b[30m
+RED=\x1b[31m
+GREEN=\x1b[32m
+YELLOW=\x1b[33m
+BLUE=\x1b[34m
+CYAN=\x1b[36m
+WHITE=\x1b[37m
+
+#Background
+IGREY=\x1b[40m
+IRED=\x1b[41m
+IGREEN=\x1b[42m
+IYELLOW=\x1b[43m
+IBLUE=\x1b[44m
+IPURPLE=\x1b[45m
+ICYAN=\x1b[46m
+IWHITE=\x1b[47m
+
+#Caract Styles
+BOLD=\033[1m
+UNDERLINE=\033[4m
+REVERSE=\033[7m

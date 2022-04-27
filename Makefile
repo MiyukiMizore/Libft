@@ -6,7 +6,7 @@
 #    By: mfusil <mfusil@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/01 19:21:22 by mfusil            #+#    #+#              #
-#    Updated: 2022/04/27 16:19:36 by mfusil           ###   ########.fr        #
+#    Updated: 2022/04/27 19:54:24 by mfusil           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ SRC_FD = fd_function/ft_putchar_fd.c\
 		 fd_function/ft_putendl_fd.c\
 		 fd_function/ft_putstr_fd.c
 
-SRC_GNL =
+SRC_GNL = gnl/get_next_line.c
 
 SRC_MEM = mem/ft_bzero.c\
 		  mem/ft_calloc.c\
@@ -57,7 +57,10 @@ SRC_MEM = mem/ft_bzero.c\
 		  mem/ft_memmove.c\
 		  mem/ft_memset.c
 
-SRC_PRINTF = 
+SRC_PRINTF = printf/ft_printf.c\
+			 printf/ft_printf_nbr.c\
+			 printf/ft_printf_str.c\
+			 printf/ft_printf_hexa.c
 
 SRC_STR = str/ft_strchr.c\
 		  str/ft_strdup.c\
@@ -72,12 +75,15 @@ SRC_STR = str/ft_strchr.c\
 		  str/ft_strtrim.c\
 		  str/ft_split.c\
 		  str/ft_strjoin.c\
+		  str/ft_strjoin_free.c\
 		  str/ft_strmapi.c
 
 ALL_SRC = $(SRC_CHECK)\
 		  $(SRC_CONVERT)\
 		  $(SRC_FD)\
+		  $(SRC_GNL)\
 		  $(SRC_MEM)\
+		  $(SRC_PRINTF)\
 		  $(SRC_STR)
 
 OBJS = $(ALL_SRC:.c=.o)\
@@ -98,6 +104,7 @@ $(NAME) : $(OBJS)
 
 alln : all
 		norminette
+		clear
 	@echo "$(BOLD)$(RED)\n\
 	⠀⠀⠀⠀⠀⠀⠠⠤⠒⠒⠒⠒⠒⠤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n\
 ⠀⠀⠀⠀⢀⡲⢋⠝⠋⣛⣳⡄⠀⠀⠀⠀⠀⠀⠉⠓⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀ \n\
@@ -140,8 +147,9 @@ clean :
 ⠀⠀⠀⠀⠀⠀⠀⢿⣿⣦⣄⣀⣠⣴⣿⣿⠁⠀⠈⠻⣿⣿⣿⣿⡿⠏⠀⠀⠀⠀ \n\
 ⠀⠀⠀⠀⠀⠀⠀⠈⠛⠻⠿⠿⠿⠿⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
 
-fclean : clean
+fclean :
 	@$(RM) $(NAME)
+	@$(RM) $(OBJS)
 	@echo "$(PURPLE)$(BOLD)JE SUIS THANOS\n\
 ⠀⠀⠀⢀⣠⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣤⡀⠀⠀⠀\n\
 ⠀⠀⣠⣿⣿⣿⡿⠻⣿⣿⣿⣿⣿⣿⠟⢿⣿⣿⣿⣆⠀⠀\n\

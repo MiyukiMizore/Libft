@@ -6,18 +6,21 @@
 /*   By: mfusil <mfusil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 18:39:51 by mfusil            #+#    #+#             */
-/*   Updated: 2022/04/26 18:00:23 by mfusil           ###   ########.fr       */
+/*   Updated: 2022/04/27 19:26:16 by mfusil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# define BUFFER_SIZE 1
 
 //Library//
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <fcntl.h>
 # include <stdio.h>
+# include <stdarg.h>
 
 //----------------check----------------//
 
@@ -41,6 +44,10 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putendl_fd(char *s, int fd);
 
+//----------------gnl----------------//
+
+char	*get_next_line(int fd);
+
 //----------------mem----------------//
 
 void	ft_bzero(void *s, size_t n);
@@ -50,6 +57,18 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*ft_memset(void *b, int c, size_t len);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	*ft_memmove(void *dst, const void *src, size_t len);
+
+//----------------printf----------------//
+
+int		ft_printf(const char *str, ...);
+int		ft_arg(va_list arg, char str);
+int		ft_putchar(char *c);
+int		ft_putstr(char *str);
+int		ft_putchar1(char c);
+int		ft_int_putnbr(int nbr);
+int		ft_unsigned_putnbr(unsigned int nbr);
+int		ft_puthexa(unsigned int nbr, char str);
+int		ft_p_puthexa(unsigned long nbr);
 
 //----------------str----------------//
 
@@ -63,6 +82,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin_free(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));

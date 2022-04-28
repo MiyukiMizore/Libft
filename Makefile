@@ -6,7 +6,7 @@
 #    By: mfusil <mfusil@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/01 19:21:22 by mfusil            #+#    #+#              #
-#    Updated: 2022/04/27 19:54:24 by mfusil           ###   ########.fr        #
+#    Updated: 2022/04/28 15:45:28 by mfusil           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,13 +93,13 @@ OBJS = $(ALL_SRC:.c=.o)\
 all : start $(NAME)
 
 start :
-	@echo "$(BOLD)$(RED)AUTODESTRUCTION EN COURS ..."
+	@echo "$(RED)$(BOLD)"
+	@./Script/script.sh
 	
 .c.o :
 	@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 $(NAME) : $(OBJS)
-	@echo "$(BOLD)$(RED)AUTODESTRUCTION FINI"
 	@$(LINK) $(NAME) $(OBJS)
 
 alln : all
@@ -150,7 +150,8 @@ clean :
 fclean :
 	@$(RM) $(NAME)
 	@$(RM) $(OBJS)
-	@echo "$(PURPLE)$(BOLD)JE SUIS THANOS\n\
+	clear
+	@echo "$(PURPLE)$(BOLD)    JE SUIS THANOS\n\
 ⠀⠀⠀⢀⣠⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣤⡀⠀⠀⠀\n\
 ⠀⠀⣠⣿⣿⣿⡿⠻⣿⣿⣿⣿⣿⣿⠟⢿⣿⣿⣿⣆⠀⠀\n\
 ⠀⢠⣿⣿⣯⣉⣿⣄⣹⣿⣿⣿⣿⣏⣠⣟⡉⣽⣿⣿⡄⠀\n\

@@ -6,7 +6,7 @@
 #    By: mfusil <mfusil@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/01 19:21:22 by mfusil            #+#    #+#              #
-#    Updated: 2022/04/28 15:45:28 by mfusil           ###   ########.fr        #
+#    Updated: 2022/05/30 13:59:47 by mfusil           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,16 @@ RM = rm -f
 LINK = ar rc
 
 #----------------------SOURCES FILES----------------------
+
+SRC_CHAIN = chain_list/ft_lstnew.c\
+			chain_list/ft_lstadd_front.c\
+			chain_list/ft_lstsize.c\
+			chain_list/ft_lstlast.c\
+			chain_list/ft_lstadd_back.c\
+			chain_list/ft_lstdelone.c\
+			chain_list/ft_lstclear.c\
+			chain_list/ft_lstiter.c\
+			chain_list/ft_lstmap.c
 
 SRC_CHECK = check/ft_isalnum.c\
 	  		check/ft_isalpha.c\
@@ -84,13 +94,16 @@ ALL_SRC = $(SRC_CHECK)\
 		  $(SRC_GNL)\
 		  $(SRC_MEM)\
 		  $(SRC_PRINTF)\
-		  $(SRC_STR)
+		  $(SRC_STR)\
+		  $(SRC_CHAIN)
 
 OBJS = $(ALL_SRC:.c=.o)\
 
 #----------------------RULES----------------------
 
 all : start $(NAME)
+
+bonus : all
 
 start :
 	@echo "$(RED)$(BOLD)"
@@ -99,12 +112,14 @@ start :
 .c.o :
 	@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
+$(BONUS) : $(OBJS) $(OBJS_BONUS)
+	@$(LINK) $(NAME) $(OBJS_BONUS)
+	
 $(NAME) : $(OBJS)
 	@$(LINK) $(NAME) $(OBJS)
 
 alln : all
-		norminette
-		clear
+		norminette	
 	@echo "$(BOLD)$(RED)\n\
 	⠀⠀⠀⠀⠀⠀⠠⠤⠒⠒⠒⠒⠒⠤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n\
 ⠀⠀⠀⠀⢀⡲⢋⠝⠋⣛⣳⡄⠀⠀⠀⠀⠀⠀⠉⠓⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀ \n\
@@ -126,6 +141,7 @@ alln : all
 		
 clean :
 	@$(RM) $(OBJS)
+	@$(RM) $(OBJS_BONUS)
 	@echo "$(BLUE)$(BOLD) TU ES SUS\n\
 		⠀⠀⠀⠀⣠⣤⣤⣤⣤⣤⣶⣦⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀ \n\
 ⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⡿⠛⠉⠙⠛⠛⠛⠛⠻⢿⣿⣷⣤⡀⠀⠀⠀⠀⠀ \n\
@@ -150,6 +166,7 @@ clean :
 fclean :
 	@$(RM) $(NAME)
 	@$(RM) $(OBJS)
+	@$(RM) $(OBJS_BONUS)
 	clear
 	@echo "$(PURPLE)$(BOLD)    JE SUIS THANOS\n\
 ⠀⠀⠀⢀⣠⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣤⡀⠀⠀⠀\n\

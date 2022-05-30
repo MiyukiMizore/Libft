@@ -6,7 +6,7 @@
 #    By: mfusil <mfusil@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/28 14:32:44 by mfusil            #+#    #+#              #
-#    Updated: 2022/04/28 15:41:27 by mfusil           ###   ########.fr        #
+#    Updated: 2022/05/25 17:18:04 by mfusil           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,23 +26,23 @@ function timer
 {
 i=0
 printf "\n         \e[1;31m        AUTODESTRUCTION EN COURS"
-sleep 1
+sleep 0,1
 printf ". "
-sleep 1
+sleep 0,5
 printf ". "
-sleep 1
+sleep 0,5
 printf ".\n\n"
 printf "             \e[1;31m    ["
-sleep 1
+sleep 0,5
 while [ $i -le 4 ]
 do
     printf "\e[1;31m■■■■■"
-    sleep 1
+    sleep 0,5
 let i=$i+1
 done
 echo "]\n"
 }
 #Update
 timer
-sleep 1
+sleep 0,5
 echo "                 [\031Autodestruction terminée]\n\n\n"

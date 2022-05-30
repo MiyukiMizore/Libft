@@ -6,7 +6,7 @@
 /*   By: mfusil <mfusil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:21:41 by mfusil            #+#    #+#             */
-/*   Updated: 2022/04/26 18:44:16 by mfusil           ###   ########.fr       */
+/*   Updated: 2022/05/30 12:48:00 by mfusil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,3 +77,13 @@ char	**ft_split(char const *s, char c)
 	tab_str[y] = NULL;
 	return (tab_str);
 }
+
+// int main()
+// {
+// 	char **res;
+// 	char *c = "Il Fait Beau";
+// 	char s = ' ';
+// 	res = ft_split(c, s);
+// 	for (int i = 0; res[i]; i++)
+// 		printf("%s\n", res[i]);
+// }
